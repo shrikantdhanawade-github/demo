@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginxdemo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginxdemo
+  template:
+    metadata:
+      labels:
+        app: nginxdemo
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: nginxdemo
+        image: nginxdemos/hello
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: DEMO
+          value: "nginxdemo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginxdemo
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: nginxdemo

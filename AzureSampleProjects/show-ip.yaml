@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: show-ip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: show-ip
+  template:
+    metadata:
+      labels:
+        app: show-ip
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: simple-web
+        image: yeasy/simple-web
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: simple-web
+          value: "simple-web"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: show-ip
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: show-ip
