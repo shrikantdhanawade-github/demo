@@ -10,7 +10,6 @@ variables:
   vmImageName: 'ubuntu-latest'
 
 stages:
-stages:
 - stage: Deploy
   displayName: Deploy stage
 
