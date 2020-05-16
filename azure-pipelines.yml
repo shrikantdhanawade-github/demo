@@ -30,4 +30,4 @@ stages:
               kubernetesServiceConnection: 'Development-demo-aks-cluster-demo-namespace-1589649066347'
               namespace: 'development'
               manifests: |
-                $(Pipeline.Workspace)/AzureSampleProjects/azure-vote.yaml
+                ./AzureSampleProjects/azure-vote.yaml
