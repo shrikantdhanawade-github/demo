@@ -1,7 +1,4 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# Demo Pipeline for deployment of application mentioned in Manifests to Azure AKS Service
 
 trigger:
 - master
