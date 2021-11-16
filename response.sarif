@@ -1,0 +1,146 @@
+{
+	"$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+	"version": "2.1.0",
+	"runs": [
+		{
+			"tool": {
+				"driver": {
+					"name": "checkov",
+					"organization": "Qualys",
+					"rules": [
+						{
+							"id": "244",
+							"name": "Ensure accessLogSettings exists with the destinationArn and in the json format for Rest API Stage in all regions",
+							"messageStrings": {
+								"remediation": {
+									"text": "Ensure aws_api_gateway_stage or aws_apigatewayv2_stage resource has access_log_settings block configured with the destination_arn and the format argument"
+								},
+								"criticality": {
+									"text": "HIGH"
+								}
+							}
+						},
+						{
+							"id": "243",
+							"name": "Ensure to enable encryption if caching is enabled for Rest API Stage in all regions",
+							"messageStrings": {
+								"remediation": {
+									"text": "Ensure aws_api_gateway_rest_api resource has cache_cluster_enabled argument set to True"
+								},
+								"criticality": {
+									"text": "MEDIUM"
+								}
+							}
+						},
+						{
+							"id": "318",
+							"name": "Ensure API Gateway has X-Ray Tracing enabled",
+							"messageStrings": {
+								"remediation": {
+									"text": "Ensure aws_api_gateway_stage resource has xray_tracing_enabled argument set to True."
+								},
+								"criticality": {
+									"text": "MEDIUM"
+								}
+							}
+						},
+						{
+							"id": "388",
+							"name": "Ensure API Gateway stage have logging level defined as appropriate",
+							"messageStrings": {
+								"remediation": {
+									"text": "Ensure that API Gateway stage has attribute settings.logging_level set to ERROR, INFO and attribute settings.metrics_enabled set to True for the aws_api_gateway_method_settings resource"
+								},
+								"criticality": {
+									"text": "HIGH"
+								}
+							}
+						}
+					]
+				}
+			},
+			"results": [
+				{
+					"ruleId": "244",
+					"level": "error",
+					"message": {
+						"text": "Ensure accessLogSettings exists with the destinationArn and in the json format for Rest API Stage in all regions"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "/aws_api_gateway_pass.tf"
+								},
+								"region": {
+									"startLine": 10,
+									"endLine": 14
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "243",
+					"level": "error",
+					"message": {
+						"text": "Ensure to enable encryption if caching is enabled for Rest API Stage in all regions"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "/aws_api_gateway_pass.tf"
+								},
+								"region": {
+									"startLine": 10,
+									"endLine": 14
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "318",
+					"level": "error",
+					"message": {
+						"text": "Ensure API Gateway has X-Ray Tracing enabled"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "/aws_api_gateway_pass.tf"
+								},
+								"region": {
+									"startLine": 10,
+									"endLine": 14
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "388",
+					"level": "error",
+					"message": {
+						"text": "Ensure API Gateway stage have logging level defined as appropriate"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "/aws_api_gateway_pass.tf"
+								},
+								"region": {
+									"startLine": 10,
+									"endLine": 14
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
