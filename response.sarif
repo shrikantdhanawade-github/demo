@@ -62,7 +62,7 @@
 			"results": [
 				{
 					"ruleId": "244",
-					"level": "error",
+					"level": "critical",
 					"message": {
 						"text": "Ensure accessLogSettings exists with the destinationArn and in the json format for Rest API Stage in all regions"
 					},
