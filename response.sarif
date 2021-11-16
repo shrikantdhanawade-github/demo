@@ -5,7 +5,7 @@
 		{
 			"tool": {
 				"driver": {
-					"name": "checkov",
+					"name": "QualysIaCSecurity",
 					"organization": "Qualys",
 					"rules": [
 						{
