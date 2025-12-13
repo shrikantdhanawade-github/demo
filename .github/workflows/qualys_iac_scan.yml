@@ -1,0 +1,20 @@
+name: Qualys IaC Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  qualys-iac-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Run Qualys IaC Scan
+      uses: Qualys/github_action_qiac@v1
+      with:
+        url: ${{ secrets.URL }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
