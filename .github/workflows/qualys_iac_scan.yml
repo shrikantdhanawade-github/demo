@@ -1,20 +1,35 @@
-name: Qualys IaC Scan
-
+name: Qualys IaC Scan with SARIF
 on:
   push:
     branches:
       - main
-
+  pull_request:
+    branches:
+      - main 
+  schedule:
+    - cron:  '*/5 * * * *'
 jobs:
-  qualys-iac-scan:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
-
-    - name: Run Qualys IaC Scan
-      uses: Qualys/github_action_qiac@v1
-      with:
-        url: ${{ secrets.URL }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+    Qualys_iac_scan:
+        runs-on: ubuntu-latest
+        name: Qualys IaC Scan
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v2 
+            with:
+                fetch-depth: 0
+    
+          - name: Qualys IAC scan action step
+            uses: Qualys/github_action_qiac@main
+            id: qiac
+            env:
+                URL: ${{ secrets.URL }}
+                UNAME: ${{ secrets.USERNAME }}
+                PASS: ${{ secrets.PASSWORD }}
+            with:
+              directory: 'path of directory to scan (optional)'
+          
+          - name: Upload SARIF file
+            uses: github/codeql-action/upload-sarif@v3
+            if: always() 
+            with:
+                 sarif_file: response.sarif
