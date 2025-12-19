@@ -2,10 +2,10 @@ name: Qualys IaC Scan with Code Scanning Alerts
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main 
+      - master 
   schedule:
     - cron:  '30 10 * * 3'
 jobs:
