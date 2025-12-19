@@ -18,7 +18,7 @@ jobs:
             with:
                 fetch-depth: 0
     
-          - name: Qualys IAC scan action step
+          - name: Qualys IAC scan action step 
             uses: Qualys/github_action_qiac@main
             id: qiac
             env:
