@@ -1,4 +1,4 @@
-name: Qualys IaC Scan with SARIF
+name: Qualys IaC Scan with Code Scanning Alerts
 on:
   push:
     branches:
@@ -6,8 +6,6 @@ on:
   pull_request:
     branches:
       - main 
-  schedule:
-    - cron:  '*/5 * * * *'
 jobs:
     Qualys_iac_scan:
         runs-on: ubuntu-latest
